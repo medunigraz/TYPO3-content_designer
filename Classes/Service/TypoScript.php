@@ -42,6 +42,8 @@ class TypoScript {
     /**
      * Returns the elements from anywhere ignoring the page ID but the TypoScript must be in root line
      *
+     * @todo maybe we can use caching framework?
+     *
      * @param string $firstTsLevel
      * @param string $prefixId
      * @param bool $includeAdditionalNames
@@ -70,6 +72,8 @@ class TypoScript {
 
     /**
      * Lädt die Typoscript konfiguration für das plugin / extension
+     *
+     * @todo maybe we can use caching framework?
      *
      * @param array $config
      * @param string $identifier
