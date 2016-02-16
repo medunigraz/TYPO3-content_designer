@@ -11,14 +11,14 @@ $temporaryColumns = array (
             'type' => 'flex',
             'ds_pointerField' => 'doktype',
             'ds' => array(
-                'default' => 'FILE:EXT:content_designer/Configuration/FlexForms/defaultPages.xml'
+                'default' => 'FILE:EXT:content_designer/Configuration/FlexForms/default.xml'
             )
         )
     )
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
-    'pages',
+    'tt_content',
     $temporaryColumns
 );
 

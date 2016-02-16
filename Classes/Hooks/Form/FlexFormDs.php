@@ -54,6 +54,7 @@ class FlexFormDs {
      */
     public function getFlexFormDS_postProcessDS(&$dataStructArray, &$conf, &$row, &$table, &$fieldName) {
         // identify the current content object type
+        // @todo Need to check if it's an CType extending (need to first load TS, maybe it's better to enable this feature in extMgrConf ?)
         if ( !($curObjType = $this->getElementTypeAndTable($row)) ) return false;
 
         // Get the typoscript configuration object

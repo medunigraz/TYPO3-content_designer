@@ -43,6 +43,8 @@ use \KERN23\ContentDesigner\Helper\GeneralHelper;
  */
 class ExtTables {
 
+    const CD_PREFIX = 'tx_contentdesigner';
+
     /**
      * @var null|KERN23\ContentDesigner\Helper\IconRegistry
      */
@@ -53,10 +55,10 @@ class ExtTables {
      *
      * @return void
      */
-    public static function registerContentElements() {
+    public static function registerNewContentElements() {
         // Load TS Setup Content Designer Items
         $table = 'tt_content';
-        $items = TypoScript::loadConfig($config, 'tx_contentdesigner', 0, $table . '.');
+        $items = TypoScript::loadConfig($config, self::CD_PREFIX, 0, $table . '.');
 
 // @todo: List label override hook, maybe now a signal slot event then a hook?
 //        $_extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['content_designer']);
@@ -64,6 +66,7 @@ class ExtTables {
 //        unset($_extConfig);
 
         // Render possible elements
+        unset($items['___extendCType']);
         if ( count($items) ) {
             if ( self::$iconRegistry == NULL ) {
                 self::$iconRegistry = GeneralUtility::makeInstance(\KERN23\ContentDesigner\Helper\IconRegistryHelper::class);
@@ -76,32 +79,60 @@ class ExtTables {
     }
 
     /**
-     * Extends the pages configuration the magic to modify the fields are comming in the Hooks (FlexFormDs and TcaDs)
+     * Extends the ttContent CType with the Content Designer Flexform
      *
      * @return void
      */
-    public static function extendPagesConfig() {
+    public static function extendTtContentTca() {
+        $cdModConf = TypoScript::loadConfig($config, self::CD_PREFIX, 0);
+        if ( !is_array($cdModConf['___extendCType']) ) return;
+        $tsConf = &$cdModConf['___extendCType'];
+
+        if ( !is_array($tsConf) ) return;
+
+        foreach ( $tsConf as $CType => $conf ) {
+            $tca      = ( !empty($conf['tca']) ) ? $conf['tca'] : '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:tt_content.tabs.extended,tx_contentdesigner_flexform';
+            $position = ( !empty($conf['tcaPosition']) ) ? $conf['tcaPosition'] : '';
+
+            \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content', $tca, $CType, $position);
+
+            // Set up default renderMethod (flexForm)
+            if ($cdItem['cObjectFlexFile']) {
+                // Use a FlexForm File
+                $GLOBALS['TCA']['tt_content']['columns'][self::CD_PREFIX . '_flexform']['config']['ds']['default'] = 'FILE:' . $cdItem['cObjectFlexFile'];
+            } else {
+                // Use base XML structure (the rest comes with TypoScript)
+                $GLOBALS['TCA']['tt_content']['columns'][self::CD_PREFIX . '_flexform']['config']['ds']['default'] = 'FILE:EXT:content_designer/Configuration/FlexForms/defaultPages.xml';
+            }
+        }
+    }
+
+    /**
+     * Extends the pages configuration the magic to modify the fields are comming in the Hooks (FlexFormDs)
+     *
+     * @return void
+     */
+    public static function extendPagesTca() {
         // Get current page id
         $table   = 'pages';
         $pageUid = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('edit');
         $pageUid = @key($pageUid[$table]);
 
         // Load TS Setup for content designer pages
-        $pagesConfig = TypoScript::loadConfig($config, 'tx_contentdesigner', $pageUid, $table . '.', true);
+        $pagesConfig = TypoScript::loadConfig($config, self::CD_PREFIX, $pageUid, $table . '.', TRUE);
 
         // do we have something to add?
-        if( is_array($pagesConfig) && count($pagesConfig['tx_contentdesigner_flexform']['settings.']['cObject.']) ) {
-            $cdItem = &$pagesConfig['tx_contentdesigner_flexform']['settings.'];
+        if( is_array($pagesConfig) && count($pagesConfig[self::CD_PREFIX . '_flexform']['settings.']['cObject.']) ) {
+            $cdItem = &$pagesConfig[self::CD_PREFIX . '_flexform']['settings.'];
 
-            // @todo the sheet isnt visible
             \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', $cdItem['tca']);
 
-            if ( $cdItem['cObjectFlexFile'] ) {
+            if ($cdItem['cObjectFlexFile']) {
                 // Use a FlexForm File
-                $GLOBALS['TCA']['pages']['columns']['tx_contentdesigner_flexform']['config']['ds']['default'] = 'FILE:'.$cdItem['cObjectFlexFile'];
+                $GLOBALS['TCA']['pages']['columns'][self::CD_PREFIX . '_flexform']['config']['ds']['default'] = 'FILE:' . $cdItem['cObjectFlexFile'];
             } else {
                 // Use base XML structure (the rest comes with TypoScript)
-                $GLOBALS['TCA']['pages']['columns']['tx_contentdesigner_flexform']['config']['ds']['default'] = 'FILE:EXT:content_designer/Configuration/FlexForms/defaultPages.xml';
+                $GLOBALS['TCA']['pages']['columns'][self::CD_PREFIX . '_flexform']['config']['ds']['default'] = 'FILE:EXT:content_designer/Configuration/FlexForms/defaultPages.xml';
             }
         }
     }

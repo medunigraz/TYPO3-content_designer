@@ -11,9 +11,13 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php'][
     'EXT:content_designer/Classes/Hooks/DrawItem.php:KERN23\\ContentDesigner\\Hooks\\DrawItem';
 
 // Register the content elements defined with SetupTS
-\KERN23\ContentDesigner\Hooks\ExtTables::registerContentElements();
+\KERN23\ContentDesigner\Hooks\ExtTables::registerNewContentElements();
 
 // Flexform to Pages
-\KERN23\ContentDesigner\Hooks\ExtTables::extendPagesConfig();
+\KERN23\ContentDesigner\Hooks\ExtTables::extendPagesTca();
+
+// Flexform to TtContent
+// @todo Maybe only enable it if set in extMgrConf (performance issues possible?)
+\KERN23\ContentDesigner\Hooks\ExtTables::extendTtContentTca();
 
 ?>

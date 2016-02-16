@@ -37,7 +37,6 @@ class ContentRendererController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
     /**
      * Shows a single item
      *
-     * @todo Do it for tca modification and not only for flexforms
      * @todo integrate caching framework
      * @return void
      */

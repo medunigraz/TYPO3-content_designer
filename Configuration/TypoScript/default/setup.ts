@@ -38,3 +38,9 @@ module.tx_contentdesigner.manualExplicitAllowDeny {
     #tx_contentdesigner_blubah = Blubber
     #tx_contentdesigner_blahblub = Bla Blub
 }
+
+#module.tx_contentdesigner.extendCType {
+#    text {
+#
+#    }
+#}

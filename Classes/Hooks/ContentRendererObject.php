@@ -4,8 +4,6 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility as GeneralUtility;
 
 /**
  * Class/Function to extend the typoscript Data Object (fields/data) to access them
- *
- * @todo do it for TCA fields also
  */
 class ContentRendererObject implements \TYPO3\CMS\Frontend\ContentObject\ContentObjectPostInitHookInterface {
 	public function postProcessContentObjectInitialization(\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer &$pObject) {

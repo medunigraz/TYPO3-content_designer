@@ -88,10 +88,13 @@ class TypoScript {
         $arr_list = self::loadTS($config, $pageUid, $noPageUidSubmit);
         if ( !is_array($arr_list) || (sizeof($arr_list) <= 0) || !is_array($arr_list[$firstTsLevel]) ) return $config;
 
+        // Append special for extending ctypes
+        if ( is_array($arr_list['module.']['tx_contentdesigner.']['extendCType.']) )
+            $retAr['___extendCType'] = $arr_list['module.']['tx_contentdesigner.']['extendCType.'];
+
         foreach ( array_keys($arr_list[$firstTsLevel]) as $key ) {
-            if ( preg_match("/^".$prefixId."_(.*)\.$/i", $key, $match) ) {
+            if ( preg_match("/^".$prefixId."_(.*)\.$/i", $key, $match) )
                 $retAr[$prefixId . '_' . $match[1]] = $arr_list[$firstTsLevel][$key];
-            }
         }
 
         self::$cache[$pageUid] = $retAr;
