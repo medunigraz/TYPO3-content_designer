@@ -53,25 +53,30 @@ class FlexFormDs {
      * @param $fieldName
      */
     public function getFlexFormDS_postProcessDS(&$dataStructArray, &$conf, &$row, &$table, &$fieldName) {
-        // identify the current content object type
-        // @todo Need to check if it's an CType extending (need to first load TS, maybe it's better to enable this feature in extMgrConf ?)
-        if ( !($curObjType = $this->getElementTypeAndTable($row)) ) return false;
+        $curObjType = $this->getElementTypeAndTable($row);
 
         // Get the typoscript configuration object
         $typoScript = TypoScript::loadConfig($conf, substr($this->prefix, 0, strlen($this->prefix) - 1), $row['pid'], $curObjType['table'] . '.');
-
+        
+        // Check whether to extend other CType's and identify the current element
+        if ( !is_array($typoScript['___extendCType'][$row['CType'] . '.']) && !($curObjType) )
+            return FALSE;
+        
         // If a flexFile defined or copied by a plugin, nothing is to do
         $tsObj       = &$typoScript[$this->prefix . $curObjType['CType']]['settings.'];
         $tsObjAltern = &$typoScript[$this->prefix . substr($curObjType['CType'], 0, strlen($curObjType['CType']) - 1)]['settings.']; # alternative access
+        $tsObjCType  = &$typoScript['___extendCType'][$row['CType'] . '.'];
 
         if ( empty($tsObj['renderMethod']) || !isset($tsObj['renderMethod']) ) $tsObj['renderMethod'] = 'flexForm';
+        if ( empty($tsObjAltern['renderMethod']) || !isset($tsObjAltern['renderMethod']) ) $tsObjAltern['renderMethod'] = 'flexForm';
+
         if ( ($tsObj['renderMethod'] != 'flexForm') && ($tsObjAltern['renderMethod'] != 'flexForm') ) {
             unset($typoScript);
             return false;
         }
 
         // Load the Field Configuration for the current selected Object
-        if ( is_array($cObject = $tsObj['cObject.']) || is_array($cObject = $tsObjAltern['cObject.']) ) {
+        if ( is_array($cObject = $tsObj['cObject.']) || is_array($cObject = $tsObjAltern['cObject.']) || is_array($cObject = &$tsObjCType) ) {
             unset($typoScript);
         } else return false;
 

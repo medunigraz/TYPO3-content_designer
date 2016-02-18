@@ -61,7 +61,7 @@ class BackendWizardItemHelper {
         $_extConfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf'][self::$prefix]);
 
         // If TSconfig Wizard adding enabled, create the Sheet
-        $label = ( trim($_extConfig['sheetTitle']) == '' ) ? 'LLL:EXT:content_designer/Resources/Private/Language/locallang_be.xml:wizard.sheetTitle' : $_extConfig['sheetTitle'];
+        $label = ( trim($_extConfig['sheetTitle']) == '' ) ? 'LLL:EXT:content_designer/Resources/Private/Language/locallang_be.xlf:wizard.sheetTitle' : $_extConfig['sheetTitle'];
 
         // Generate tsConfig
         ExtensionManagementUtility::addPageTsConfig('

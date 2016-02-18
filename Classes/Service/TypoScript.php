@@ -71,9 +71,7 @@ class TypoScript {
     }
 
     /**
-     * Lädt die Typoscript konfiguration für das plugin / extension
-     *
-     * @todo maybe we can use caching framework?
+     * Loads the typoscript configuration for the plugin / extension
      *
      * @param array $config
      * @param string $identifier
@@ -85,20 +83,30 @@ class TypoScript {
     public static function loadConfig(&$config, $prefixId = 'tx_contentdesigner', $pageUid = 0, $firstTsLevel = 'tt_content.', $noPageUidSubmit = FALSE) {
         if ( isset(self::$cache[$pageUid]) ) return self::$cache[$pageUid];
 
+        // Get the typoscript
         $arr_list = self::loadTS($config, $pageUid, $noPageUidSubmit);
-        if ( !is_array($arr_list) || (sizeof($arr_list) <= 0) || !is_array($arr_list[$firstTsLevel]) ) return $config;
+
+        // nothing? return!
+        if ( !is_array($arr_list) || (sizeof($arr_list) <= 0) ) return $config;
 
         // Append special for extending ctypes
         if ( is_array($arr_list['module.']['tx_contentdesigner.']['extendCType.']) )
             $retAr['___extendCType'] = $arr_list['module.']['tx_contentdesigner.']['extendCType.'];
 
-        foreach ( array_keys($arr_list[$firstTsLevel]) as $key ) {
-            if ( preg_match("/^".$prefixId."_(.*)\.$/i", $key, $match) )
-                $retAr[$prefixId . '_' . $match[1]] = $arr_list[$firstTsLevel][$key];
-        }
+        // is nothing more? then return
+        if ( is_array($arr_list[$firstTsLevel]) )
+            foreach ( array_keys($arr_list[$firstTsLevel]) as $key ) {
+                if ( preg_match("/^".$prefixId."_(.*)\.$/i", $key, $match) )
+                    $retAr[$prefixId . '_' . $match[1]] = $arr_list[$firstTsLevel][$key];
+            }
 
+        // if absolutely nothing then return
+        if ( sizeof($retAr) <= 0 ) return $config;
+
+        // Static caching
         self::$cache[$pageUid] = $retAr;
 
+        // Return result
         return $retAr;
     }
 
@@ -111,7 +119,7 @@ class TypoScript {
      */
     public static function parseTypoScriptObj($objType, $objArray, $cObj) {
         if ( (!empty($objType)) && (sizeof($objArray) > 0) ) {
-            return $cObj->cObjGetSingle($objType,$objArray);
+            return $cObj->cObjGetSingle($objType, $objArray);
         } else return FALSE;
     }
 

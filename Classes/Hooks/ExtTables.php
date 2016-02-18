@@ -84,17 +84,20 @@ class ExtTables {
      * @return void
      */
     public static function extendTtContentTca() {
+        // Load TypoScript
         $cdModConf = TypoScript::loadConfig($config, self::CD_PREFIX, 0);
         if ( !is_array($cdModConf['___extendCType']) ) return;
         $tsConf = &$cdModConf['___extendCType'];
 
         if ( !is_array($tsConf) ) return;
 
+        // Prepare the CTypes to extend
         foreach ( $tsConf as $CType => $conf ) {
-            $tca      = ( !empty($conf['tca']) ) ? $conf['tca'] : '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:tt_content.tabs.extended,tx_contentdesigner_flexform';
+            $CType    = substr($CType, 0, strlen($CType) - 1);
+            $tca      = ( !empty($conf['tca']) ) ? $conf['tca'] : '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.extended,tx_contentdesigner_flexform';
             $position = ( !empty($conf['tcaPosition']) ) ? $conf['tcaPosition'] : '';
 
-            \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content', $tca, $CType, $position);
+            ExtensionManagementUtility::addToAllTCAtypes('tt_content', $tca, $CType, $position);
 
             // Set up default renderMethod (flexForm)
             if ($cdItem['cObjectFlexFile']) {
@@ -125,7 +128,7 @@ class ExtTables {
         if( is_array($pagesConfig) && count($pagesConfig[self::CD_PREFIX . '_flexform']['settings.']['cObject.']) ) {
             $cdItem = &$pagesConfig[self::CD_PREFIX . '_flexform']['settings.'];
 
-            \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages', $cdItem['tca']);
+            ExtensionManagementUtility::addToAllTCAtypes('pages', $cdItem['tca']);
 
             if ($cdItem['cObjectFlexFile']) {
                 // Use a FlexForm File

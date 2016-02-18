@@ -46,7 +46,7 @@ class ContentRendererController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
 
         // Load the data
         if ( empty($this->settings['renderMethod']) || !isset($this->settings['renderMethod']) ) $this->settings['renderMethod'] = 'flexForm';
-        $cObjAr = ( $this->settings['renderMethod'] != 'tca' ) ? $this->settings['flexform'] : $this->loadTCA();
+        $cObjAr = &$this->settings['flexform'];
 
         // Append extra static fields
         if ( sizeof($this->settings['cObjectStaticData.']) > 0 ) {
@@ -89,15 +89,6 @@ class ContentRendererController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
 
         $tsParser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Service\\TypoScriptService');
         $this->settings['renderObj.'] = $tsParser->convertPlainArrayToTypoScriptArray($settings['renderObj.']);
-    }
-
-    /**
-     * Loads the real TCA fields created by the content_designer
-     *
-     * @return array
-     */
-    private function loadTCA() {
-        return array();
     }
 }
 

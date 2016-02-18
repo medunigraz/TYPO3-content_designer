@@ -17,7 +17,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['cms/layout/class.tx_cms_layout.php'][
 \KERN23\ContentDesigner\Hooks\ExtTables::extendPagesTca();
 
 // Flexform to TtContent
-// @todo Maybe only enable it if set in extMgrConf (performance issues possible?)
 \KERN23\ContentDesigner\Hooks\ExtTables::extendTtContentTca();
 
 ?>
