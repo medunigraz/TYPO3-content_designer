@@ -1,3 +1,5 @@
+# @todo update this typoscript
+
 plugin.tx_contentdesigner = USER
 plugin.tx_contentdesigner {
     userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run

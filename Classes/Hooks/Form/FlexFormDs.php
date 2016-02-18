@@ -61,7 +61,7 @@ class FlexFormDs {
         // Check whether to extend other CType's and identify the current element
         if ( !is_array($typoScript['___extendCType'][$row['CType'] . '.']) && !($curObjType) )
             return FALSE;
-        
+
         // If a flexFile defined or copied by a plugin, nothing is to do
         $tsObj       = &$typoScript[$this->prefix . $curObjType['CType']]['settings.'];
         $tsObjAltern = &$typoScript[$this->prefix . substr($curObjType['CType'], 0, strlen($curObjType['CType']) - 1)]['settings.']; # alternative access

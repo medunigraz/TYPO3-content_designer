@@ -32,5 +32,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRe
 );
 
 // @todo test the IRRE functionality
+// @todo update the documentation
+// @todo update the README.md (for git etc)
 
 ?>

@@ -5,7 +5,7 @@ namespace KERN23\ContentDesigner\Controller;
 /* * *************************************************************
  *  Copyright notice
  *
- *  (c) 2013
+ *  (c) 2016 Hendrik Reimers <kontakt@kern23.de>
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -26,7 +26,7 @@ namespace KERN23\ContentDesigner\Controller;
  * ************************************************************* */
 
 /**
- *
+ * Content Designer Controller
  *
  * @package ContentDesigner
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -56,7 +56,7 @@ class ContentRendererController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         }
 
         // Content Object loading
-        $this->cObj = $this->configurationManager->getContentObject(); // Die original Daten zwischen speichern
+        $this->cObj = $this->configurationManager->getContentObject(); // temp save of the original data
 
         // Load the content object data
         $data = $this->cObj->data;
@@ -70,7 +70,7 @@ class ContentRendererController extends \TYPO3\CMS\Extbase\Mvc\Controller\Action
         $itemContent = \KERN23\ContentDesigner\Service\TypoScript::parseTypoScriptObj($this->settings['renderObj'], $this->settings['renderObj.'], $this->cObj);
 
         // Reset to default data object
-        $this->cObj->start($data, 'tt_content'); // Reset des CURRENT Wert damit die Content ID wieder eingefuegt werden kann
+        $this->cObj->start($data, 'tt_content'); // Reset the DATA with the original data
 
         // Return result
         return $itemContent;
