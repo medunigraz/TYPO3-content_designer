@@ -190,3 +190,17 @@ page.10 = TEXT
 page.10.field = text
 page.10.br = 1
 */
+
+# Example to extend tt_content CType TEXT & MEDIA
+module.tx_contentdesigner.extendCType {
+	textmedia {
+		sDEF {
+			sheetTitle = Test
+
+			el.myfield {
+				label = Mein Feld
+				config.type = input
+			}
+		}
+	}
+}
