@@ -147,6 +147,9 @@ class TypoScript {
     private static function loadTS(&$conf, $pageUid = 0, $noPageUidSubmit = FALSE) {
         $pid = ( $noPageUidSubmit == FALSE ) ? self::getPid() : self::getPid($pageUid); // Fixed bug, if page properties the pid must be determined not by given pageUid
 
+        #if ( ($pid === NULL) || ($pid <= 0) ) return FALSE;
+        if ( \KERN23\ContentDesigner\Helper\GeneralHelper::isModuleAcceptable() === FALSE ) return FALSE;
+
         $ps       = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\Page\PageRepository::class);
         $rootline = $ps->getRootLine($pid);
         if (empty($rootline)) return FALSE;
