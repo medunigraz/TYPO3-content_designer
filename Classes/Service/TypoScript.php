@@ -126,7 +126,7 @@ class TypoScript {
      *
      * @return \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer
      */
-    public function cObjInit() {
+    public static function cObjInit() {
         return self::cObjectInit();
     }
 
