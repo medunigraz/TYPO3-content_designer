@@ -1,0 +1,17 @@
+.. |wizard1|      image:: ../Images/wizard.png
+.. :align: left
+.. :border: 0
+.. :name: wizard1
+.. :vspace: 57
+
+.. |example1|      image:: ../Images/media_example.png
+.. :align: left
+.. :border: 0
+.. :name: example1
+.. :vspace: 57
+
+.. |kern23|      image:: ../Images/kern23_logotype.png
+.. :align: left
+.. :border: 0
+.. :name: kern23
+.. :vspace: 57
