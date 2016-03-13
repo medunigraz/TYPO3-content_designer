@@ -12,6 +12,7 @@ If you have not set new content elements in the ROOT TypoScript Template, it cou
 In this case you can manually add them by setting the following typoscript setup in your root template:
 
 ::
+
     module.tx_contentdesigner.manualExplicitAllowDeny {
       # Example to manually add contentdesigner keys to the
       # BE Group explicit allow/deny field list.
@@ -21,3 +22,4 @@ In this case you can manually add them by setting the following typoscript setup
 
       tx_contentdesigner_YOURELEMENTKEY = Your Title in the explicit AD Fieldlist
     }
+

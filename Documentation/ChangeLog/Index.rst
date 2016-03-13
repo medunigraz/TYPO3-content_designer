@@ -5,6 +5,7 @@ ChangeLog
 =========
 
 .. t3-field-list-table::
+ :widths: 10 10 40
  :header-rows: 1
 
  - :Version:
@@ -22,13 +23,6 @@ ChangeLog
      * Deprecated static call of non staic function.
      * Install Tool “Extension check” failed
      * Loading JavaScript (require.js etc.) for context menu and many other Backend functions crashed.
-
- - :Version:
-      Version
-   :Date:
-      Release Date
-   :Changes:
-      Release Description
 
  - :Version:
       3.0.0

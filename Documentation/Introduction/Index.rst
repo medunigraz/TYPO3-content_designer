@@ -35,8 +35,11 @@ Screenshots
 Here you see what the extension does:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-|wizard1|
-Custom elements in wizards wiev
+.. figure:: ../Images/wizard.png
+    :align: center
+
+    Custom elements in wizards wiev
+
 
 |example1|
 Custom Media element from the inside
