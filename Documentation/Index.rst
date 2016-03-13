@@ -21,7 +21,7 @@ Content Designer
 		Normally, everytime you need a new Content Element Type for “special Content”, you need to write a new Extension. With this extension you can create new Content Elements fast and easy, just with TypoScript or FlexForms. The new CE's will appear in the Content Element Wizard in a special Sheet and Ctype Dropdown.
 
 	:Keywords:
-        content, typoscript, new elements, content elements, wizard
+        content,typoscript,new elements,content elements,wizard
 
 	:Copyright:
 		2016
@@ -56,3 +56,4 @@ Content Designer
 	KnownProblems/Index
 	ToDoList/Index
 	ChangeLog/Index
+	Links

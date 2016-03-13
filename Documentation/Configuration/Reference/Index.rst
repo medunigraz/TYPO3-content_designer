@@ -7,6 +7,7 @@ Reference
 TypoScript Setup
 ----------------
 
+
 .. t3-field-list-table::
  :header-rows: 1
 
@@ -19,7 +20,6 @@ TypoScript Setup
    :Default:
       Default
 
-
  - :Setup:
       settings.cObject
    :Description:
@@ -28,7 +28,6 @@ TypoScript Setup
       array
    :Default:
 
-
  - :Setup:
       settings.cObjectFlexFile
    :Description:
@@ -36,7 +35,6 @@ TypoScript Setup
    :Type:
       string
    :Default:
-
 
  - :Setup:
       settings.renderMethod
@@ -48,7 +46,6 @@ TypoScript Setup
       flexForm
    :Default:
 
-
  - :Setup:
       settings.title
    :Description:
@@ -56,7 +53,6 @@ TypoScript Setup
    :Type:
       string
    :Default:
-
 
  - :Setup:
       settings.description
@@ -66,7 +62,6 @@ TypoScript Setup
       string
    :Default:
 
-
  - :Setup:
       settings.previewObj
    :Description:
@@ -75,7 +70,6 @@ TypoScript Setup
       stdWrap
    :Default:
 
-
  - :Setup:
       settings.renderObj
    :Description:
@@ -83,7 +77,6 @@ TypoScript Setup
    :Type:
       stdWrap
    :Default:
-
 
  - :Setup:
       settings.icon
@@ -94,7 +87,6 @@ TypoScript Setup
    :Default:
       Ext default
 
-
  - :Setup:
       settings.iconSmall
    :Description:
@@ -103,7 +95,6 @@ TypoScript Setup
       string
    :Default:
       Ext default
-
 
  - :Setup:
       settings.disableDefaultDrawItem
@@ -114,7 +105,6 @@ TypoScript Setup
    :Default:
       0
 
-
  - :Setup:
       settings.flexform
    :Description:
@@ -124,7 +114,6 @@ TypoScript Setup
    :Default:
       Ext. automatic
 
-
  - :Setup:
       settings.cObject
    :Description:
@@ -132,7 +121,6 @@ TypoScript Setup
    :Type:
       Array
    :Default:
-
 
  - :Setup:
       settings.cObjectFlexFile
@@ -142,7 +130,6 @@ TypoScript Setup
       string
    :Default:
 
-
  - :Setup:
       settings.altLabelField
    :Description:
@@ -150,7 +137,6 @@ TypoScript Setup
    :Type:
       string
    :Default:
-
 
  - :Setup:
       settings.altLabelField.userFunc
@@ -164,7 +150,6 @@ TypoScript Setup
       string
    :Default:
 
-
  - :Setup:
       settings.tca
    :Description:
@@ -172,7 +157,6 @@ TypoScript Setup
    :Type:
       string
    :Default:
-
 
  - :Setup:
       settings.tcaFromType
@@ -183,7 +167,6 @@ TypoScript Setup
    :Default:
       header
 
-
  - :Setup:
       settings.tcaFromTypePosition
    :Description:
@@ -192,7 +175,6 @@ TypoScript Setup
       string
    :Default:
       after:header
-
 
  - :Setup:
       settings.tcaFromTypePosition
@@ -209,16 +191,18 @@ TypoScript Setup
 
 if you want to extend the page properties use the following:
 
-.. code-block:: text
-    pages.tx_contentdesigner_flexform
+::
 
+    pages.tx_contentdesigner_flexform
 
 Example
 -------
 
 Some examples on usage:
 
-.. code-block:: text
+.. code-block:: javascript
+    :linenos:
+
     #
     ## Simple usage Example
     #
@@ -432,18 +416,20 @@ page TSconfig
 With the Tsconfig you change the visibility, title, or else of the Content Elements. You can disable this function in the Extension Configuration in Ext. Manager. In this case the elements will be added by a Typo3 Hook.
 
 ::
-    mod.wizards.newContentElement.wizardItems.cd.header = LLL:EXT:content_designer/Resources/Private/Language/locallang_be.xml:wizard.sheetTitle
 
+    mod.wizards.newContentElement.wizardItems.cd.header = LLL:EXT:content_designer/Resources/Private/Language/locallang_be.xml:wizard.sheetTitle
 
 Here is an example on how to remove a Content Element (maybe for a BE user group or else):
 
 ::
+
     mod.wizards.newContentElement.wizardItems.cd.show := removeFromList(tx_contentdesigner_googleStaticImage)
     TCEFORM.tt_content.CType.removeItems := addToList(tx_contentdesigner_googleStaticImage)
-
 
 Here's an example to controll the typo3 normal fields like header or header_link and so on:
 
 ::
+
     TCEFORM.header.type.tx_contentdesigner_YOURELEMENTKEY.disabled = 1
     TCEFORM.header_link.type.tx_contentdesigner_YOURELEMENTKEY.disabled = 1
+

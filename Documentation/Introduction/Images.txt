@@ -5,7 +5,7 @@
 .. :vspace: 57
 
 .. |example1|      image:: ../Images/media_example.png
-.. :align: left
+.. :align: center
 .. :border: 0
 .. :name: example1
 .. :vspace: 57
