@@ -5,7 +5,6 @@ ChangeLog
 =========
 
 .. t3-field-list-table::
- :widths: 10 10 40
  :header-rows: 1
 
  - :Version:
