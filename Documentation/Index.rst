@@ -46,8 +46,8 @@ Content Designer
 
 .. toctree::
     :maxdepth: 3
-	:titlesonly:
-	:glob:
+    :titlesonly:
+    :glob:
 
 	Introduction/Index
 	ForEditors/Index
