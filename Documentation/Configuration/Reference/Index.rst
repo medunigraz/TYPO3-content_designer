@@ -7,7 +7,6 @@ Reference
 TypoScript Setup
 ----------------
 
-
 .. t3-field-list-table::
  :header-rows: 1
 
@@ -27,6 +26,7 @@ TypoScript Setup
    :Type:
       array
    :Default:
+      -
 
  - :Setup:
       settings.cObjectFlexFile
@@ -35,6 +35,7 @@ TypoScript Setup
    :Type:
       string
    :Default:
+      -
 
  - :Setup:
       settings.renderMethod
@@ -44,7 +45,6 @@ TypoScript Setup
       string
    :Default:
       flexForm
-   :Default:
 
  - :Setup:
       settings.title
@@ -53,6 +53,7 @@ TypoScript Setup
    :Type:
       string
    :Default:
+      -
 
  - :Setup:
       settings.description
@@ -61,6 +62,7 @@ TypoScript Setup
    :Type:
       string
    :Default:
+      -
 
  - :Setup:
       settings.previewObj
@@ -69,6 +71,7 @@ TypoScript Setup
    :Type:
       stdWrap
    :Default:
+      -
 
  - :Setup:
       settings.renderObj
@@ -77,6 +80,7 @@ TypoScript Setup
    :Type:
       stdWrap
    :Default:
+      -
 
  - :Setup:
       settings.icon
@@ -121,6 +125,7 @@ TypoScript Setup
    :Type:
       Array
    :Default:
+      -
 
  - :Setup:
       settings.cObjectFlexFile
@@ -129,6 +134,7 @@ TypoScript Setup
    :Type:
       string
    :Default:
+      -
 
  - :Setup:
       settings.altLabelField
@@ -137,18 +143,18 @@ TypoScript Setup
    :Type:
       string
    :Default:
+      -
 
  - :Setup:
       settings.altLabelField.userFunc
    :Description:
       Like above but uses a userFunction to generate the title. Example of a user function included in the Extension Folder (Resources / Private / LabelUserFunc / user_labelexample.class.php
-
       See it in action with the gallery example (enable feature in extMgr and go to list module to a page which has the gallery element on it)
-
       Call it like this:altLabelField.userFunc = EXT:content_designer/Resou rces/Private/LabelUserFunc/user_labelexample.class.php:user_labelexa mple->getUserLabelFeature needed to be enabled in extManager extConf!
    :Type:
       string
    :Default:
+      -
 
  - :Setup:
       settings.tca
@@ -157,6 +163,7 @@ TypoScript Setup
    :Type:
       string
    :Default:
+      -
 
  - :Setup:
       settings.tcaFromType
@@ -410,7 +417,7 @@ Hints and Tipps
 - In some cases your content element idea is to complex to make it with typoscript. So make a flexForm XML and include it alternatively with cObjectFlexFile = yourflexfile.xmlrenderMethod = flexFormFile
 
 
-page TSconfig
+Page TSconfig
 -------------
 
 With the Tsconfig you change the visibility, title, or else of the Content Elements. You can disable this function in the Extension Configuration in Ext. Manager. In this case the elements will be added by a Typo3 Hook.
