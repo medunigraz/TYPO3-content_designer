@@ -1,16 +1,9 @@
 .. include:: ../Includes.txt
-.. include:: Images.txt
 
-.. _introduction:
 
 Introduction
 ============
 
-.. only:: html
-
-	:ref:`what-it-does` | :ref:`screenshots` | :ref:`authors` |
-
-.. _what-it-does:
 
 What does it do?
 ----------------
@@ -27,7 +20,6 @@ Feel free to give me a feedback or donate it, if you like it.
 
 But for support, please think about how much time i've spent to create this free extension. It would be nice if you think about a little gift or other donation for support.
 
-.. _screenshots:
 
 Screenshots
 -----------
@@ -46,8 +38,6 @@ Here you see what the extension does:
 
     Custom Media element from the inside
 
-
-.. _authors:
 
 Authors
 -------

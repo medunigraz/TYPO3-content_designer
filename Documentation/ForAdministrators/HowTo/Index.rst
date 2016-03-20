@@ -2,7 +2,7 @@
 
 
 How to create new content elements
-----------------------------------
+==================================
 
 First of all, include the Default static Template with the Template module.
 The following example is just a very quick tutorial. It's recommended to take a look at the static Template examples to see and learn how this works.
