@@ -41,8 +41,10 @@ Here you see what the extension does:
     Custom elements in wizards wiev
 
 
-|example1|
-Custom Media element from the inside
+.. figure:: ../Images/media_example.png
+    :align: center
+
+    Custom Media element from the inside
 
 
 .. _authors:
@@ -52,4 +54,4 @@ Authors
 
 This is extension is created by Hendrik Reimers (`http://www.kern23.de <http://www.kern23.de>`_)
 
-|kern23|
+.. figure:: ../Images/kern23_logotype.png

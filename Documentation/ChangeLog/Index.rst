@@ -5,7 +5,6 @@ ChangeLog
 =========
 
 .. t3-field-list-table::
- :widths: 10 10 40
  :header-rows: 1
 
  - :Version:
@@ -14,6 +13,13 @@ ChangeLog
       Release Date
    :Changes:
       Release Description
+
+ - :Version:
+      3.0.2 - 3.0.4
+   :Date:
+      2016-03-13
+   :Changes:
+     * Fix documentation rendering
 
  - :Version:
       3.0.1
