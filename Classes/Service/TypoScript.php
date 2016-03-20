@@ -53,9 +53,11 @@ class TypoScript {
         $tsSetup              = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
 
         // Find content designer elements
-        foreach ( array_keys($tsSetup[$firstTsLevel]) as $key ) {
-            if ( preg_match('/^'.$prefixId.'(.*)\.$/i', $key, $match) ) {
-                $retAr[$prefixId . $match[1]] = $tsSetup[$firstTsLevel][$key];
+        if ( is_array($tsSetup[$firstTsLevel]) ) {
+            foreach ( array_keys($tsSetup[$firstTsLevel]) as $key ) {
+                if ( preg_match('/^'.$prefixId.'(.*)\.$/i', $key, $match) ) {
+                    $retAr[$prefixId . $match[1]] = $tsSetup[$firstTsLevel][$key];
+                }
             }
         }
 
