@@ -7,190 +7,196 @@ Reference
 TypoScript Setup
 ----------------
 
+settings.cObject
+""""""""""""""""
+.. container:: table-row
+
+    Property
+        settings.cObject
+    Data type
+        array
+    Description
+        Definition of the Backend Layout
+
+settings.cObjectFlexFile
+""""""""""""""""""""""""
+.. container:: table-row
+
+    Property
+        settings.cObjectFlexFile
+    Data type
+        string
+    Description
+        Path to a FlexForm XML file, alternative to the cObject definition.
+
+
+
 .. t3-field-list-table::
- :header-rows: 1
+    :header-rows: 1
 
- - :Setup:
-      Setup
-   :Description:
-      Description
-   :Type:
-      Type
-   :Default:
-      Default
+    - :Setup:
+        Setup
+    :Description:
+        Description
+    :Type:
+        Type
+    :Default:
+        Default
 
- - :Setup:
-      settings.cObject
-   :Description:
-      Definition of the Backend Layout
-   :Type:
-      array
-   :Default:
-      -
+    - :Setup:
+        settings.renderMethod
+    :Description:
+        By default it renders the cObject but if you set it to “flexFormFile” the “cObjectFlexFile” will be used
+    :Type:
+        string
+    :Default:
+        flexForm
 
- - :Setup:
-      settings.cObjectFlexFile
-   :Description:
-      Path to a FlexForm XML file, alternative to the cObject definition.
-   :Type:
-      string
-   :Default:
-      -
+    - :Setup:
+        settings.title
+    :Description:
+        Label of the content Element
+    :Type:
+        string
+    :Default:
+        -
 
- - :Setup:
-      settings.renderMethod
-   :Description:
-      By default it renders the cObject but if you set it to “flexFormFile” the “cObjectFlexFile” will be used
-   :Type:
-      string
-   :Default:
-      flexForm
+    - :Setup:
+        settings.description
+    :Description:
+        Description of the CE for the wizard.
+    :Type:
+        string
+    :Default:
+        -
 
- - :Setup:
-      settings.title
-   :Description:
-      Label of the content Element
-   :Type:
-      string
-   :Default:
-      -
+    - :Setup:
+        settings.previewObj
+    :Description:
+        Could be anything what TypoScript can do. Renders the backend preview in the page module.
+    :Type:
+        stdWrap
+    :Default:
+        -
 
- - :Setup:
-      settings.description
-   :Description:
-      Description of the CE for the wizard.
-   :Type:
-      string
-   :Default:
-      -
+    - :Setup:
+        settings.renderObj
+    :Description:
+        Define here the frontend rendering of your content Element.
+    :Type:
+        stdWrap
+    :Default:
+        -
 
- - :Setup:
-      settings.previewObj
-   :Description:
-      Could be anything what TypoScript can do. Renders the backend preview in the page module.
-   :Type:
-      stdWrap
-   :Default:
-      -
+    - :Setup:
+        settings.icon
+    :Description:
+        Path to a icon Image (eq GIF) for the CE Wizard
+    :Type:
+        string
+    :Default:
+        Ext default
 
- - :Setup:
-      settings.renderObj
-   :Description:
-      Define here the frontend rendering of your content Element.
-   :Type:
-      stdWrap
-   :Default:
-      -
+    - :Setup:
+        settings.iconSmall
+    :Description:
+        Path to a icon Image (eq GIF) the the Ctype Dropdown.
+    :Type:
+        string
+    :Default:
+        Ext default
 
- - :Setup:
-      settings.icon
-   :Description:
-      Path to a icon Image (eq GIF) for the CE Wizard
-   :Type:
-      string
-   :Default:
-      Ext default
+    - :Setup:
+        settings.disableDefaultDrawItem
+    :Description:
+        Whether to draw the item using the default functionalities
+    :Type:
+        boolean
+    :Default:
+        0
 
- - :Setup:
-      settings.iconSmall
-   :Description:
-      Path to a icon Image (eq GIF) the the Ctype Dropdown.
-   :Type:
-      string
-   :Default:
-      Ext default
+    - :Setup:
+        settings.flexform
+    :Description:
+        This will be automaticly filled by the Extension with the Data from the settings.cObject or the values from the FlexFile (cObjectFlexFile) if your fields named like “settings.flexform.yourfield
+    :Type:
+        Array
+    :Default:
+        Ext. automatic
 
- - :Setup:
-      settings.disableDefaultDrawItem
-   :Description:
-      Whether to draw the item using the default functionalities
-   :Type:
-      boolean
-   :Default:
-      0
+    - :Setup:
+        settings.cObject
+    :Description:
+        Definition of the Backend Layout
+    :Type:
+        Array
+    :Default:
+        -
 
- - :Setup:
-      settings.flexform
-   :Description:
-      This will be automaticly filled by the Extension with the Data from the settings.cObject or the values from the FlexFile (cObjectFlexFile) if your fields named like “settings.flexform.yourfield
-   :Type:
-      Array
-   :Default:
-      Ext. automatic
+    - :Setup:
+        settings.cObjectFlexFile
+    :Description:
+        Path to a FlexForm XML file, alternative to the cObject definition.
+    :Type:
+        string
+    :Default:
+        -
 
- - :Setup:
-      settings.cObject
-   :Description:
-      Definition of the Backend Layout
-   :Type:
-      Array
-   :Default:
-      -
+    - :Setup:
+        settings.altLabelField
+    :Description:
+        Overwrite the TCA Label in the List Module with static value. Useful if you're not using the tt_content header Field.Feature needed to be enabled in extManager extConf!
+    :Type:
+        string
+    :Default:
+        -
 
- - :Setup:
-      settings.cObjectFlexFile
-   :Description:
-      Path to a FlexForm XML file, alternative to the cObject definition.
-   :Type:
-      string
-   :Default:
-      -
+    - :Setup:
+        settings.altLabelField.userFunc
+    :Description:
+        Like above but uses a userFunction to generate the title. Example of a user function included in the Extension Folder (Resources / Private / LabelUserFunc / user_labelexample.class.php
+        See it in action with the gallery example (enable feature in extMgr and go to list module to a page which has the gallery element on it)
+        Call it like this:altLabelField.userFunc = EXT:content_designer/Resou rces/Private/LabelUserFunc/user_labelexample.class.php:user_labelexa mple->getUserLabelFeature needed to be enabled in extManager extConf!
+    :Type:
+        string
+    :Default:
+        -
 
- - :Setup:
-      settings.altLabelField
-   :Description:
-      Overwrite the TCA Label in the List Module with static value. Useful if you're not using the tt_content header Field.Feature needed to be enabled in extManager extConf!
-   :Type:
-      string
-   :Default:
-      -
+    - :Setup:
+        settings.tca
+    :Description:
+        The default TCA Layout for the Content Element. Since 2.6.0 it's empty and then the setting tcaFromType will be used. If you put something into this (like TS default commented code) this is used
+    :Type:
+        string
+    :Default:
+        -
 
- - :Setup:
-      settings.altLabelField.userFunc
-   :Description:
-      Like above but uses a userFunction to generate the title. Example of a user function included in the Extension Folder (Resources / Private / LabelUserFunc / user_labelexample.class.php
-      See it in action with the gallery example (enable feature in extMgr and go to list module to a page which has the gallery element on it)
-      Call it like this:altLabelField.userFunc = EXT:content_designer/Resou rces/Private/LabelUserFunc/user_labelexample.class.php:user_labelexa mple->getUserLabelFeature needed to be enabled in extManager extConf!
-   :Type:
-      string
-   :Default:
-      -
+    - :Setup:
+        settings.tcaFromType
+    :Description:
+        Copies the default TCA from another Ctype and appends the pi_flexform field. By default it copies from the Header CType
+    :Type:
+        string
+    :Default:
+        header
 
- - :Setup:
-      settings.tca
-   :Description:
-      The default TCA Layout for the Content Element. Since 2.6.0 it's empty and then the setting tcaFromType will be used. If you put something into this (like TS default commented code) this is used
-   :Type:
-      string
-   :Default:
-      -
+    - :Setup:
+        settings.tcaFromTypePosition
+    :Description:
+        Where should be the pi_flexform TCA field placed
+    :Type:
+        string
+    :Default:
+        after:header
 
- - :Setup:
-      settings.tcaFromType
-   :Description:
-      Copies the default TCA from another Ctype and appends the pi_flexform field. By default it copies from the Header CType
-   :Type:
-      string
-   :Default:
-      header
-
- - :Setup:
-      settings.tcaFromTypePosition
-   :Description:
-      Where should be the pi_flexform TCA field placed
-   :Type:
-      string
-   :Default:
-      after:header
-
- - :Setup:
-      settings.tcaFromTypePosition
-   :Description:
-      Where should be the pi_flexform TCA field placed
-   :Type:
-      string
-   :Default:
-      after:header
+    - :Setup:
+        settings.tcaFromTypePosition
+    :Description:
+        Where should be the pi_flexform TCA field placed
+    :Type:
+        string
+    :Default:
+        after:header
 
 
 [tsref:tt_content.tx_contentdesigner_YOURELKEY]

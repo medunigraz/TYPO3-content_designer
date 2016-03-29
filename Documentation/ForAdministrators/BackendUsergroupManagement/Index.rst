@@ -2,7 +2,7 @@
 
 
 Backend usergroup management
-----------------------------
+============================
 
 In the Backend Usergroup settings, you can set the allowed Content Elements like others (explicit allow/deny field.
 
