@@ -15,9 +15,9 @@ ChangeLog
       Release Description
 
  - :Version:
-      3.0.2 - 3.0.4
+      3.0.2 - 3.0.6
    :Date:
-      2016-03-13
+      2016-04-01
    :Changes:
      * Fix documentation rendering
 
