@@ -174,7 +174,7 @@ class TypoScript {
     private static function cObjectInit() {
         $pid = self::getPid();
 
-        $GLOBALS['TSFE'] = new TypoScriptFrontendController($TYPO3_CONF_VARS, $pid, 0, true);
+        $GLOBALS['TSFE'] = GeneralUtility::makeInstance(TypoScriptFrontendController::class, $GLOBALS['TYPO3_CONF_VARS'], $pid, 0, true);
 
         if (!is_object($GLOBALS['TT'])) {
             $GLOBALS['TT'] = GeneralUtility::makeInstance(\TYPO3\CMS\Core\TimeTracker\TimeTracker::class);
