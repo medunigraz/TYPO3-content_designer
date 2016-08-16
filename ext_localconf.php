@@ -31,6 +31,14 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRe
 	)
 );
 
+// Cache required to fix flexform related bug with new form engine and IRRE
+if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY])) {
+	$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$_EXTKEY] = array(
+		'frontend' => \TYPO3\CMS\Core\Cache\Frontend\VariableFrontend::class,
+		'groups' => array('system')
+	);
+}
+
 // @todo test the IRRE functionality
 // @todo update the documentation
 // @todo update the README.md (for git etc)
