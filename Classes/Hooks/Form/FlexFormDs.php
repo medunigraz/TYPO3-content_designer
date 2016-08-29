@@ -63,7 +63,7 @@ class FlexFormDs {
 
         // Restore dataStructArray from cache if necessary
         $cachedDataStructArray = $cache->get($cacheIdentifier);
-        if (!array_key_exists('uid', $row) && $cachedDataStructArray) {
+        if ($cachedDataStructArray) {
             $dataStructArray = $cachedDataStructArray;
             return true;
         }
