@@ -174,7 +174,7 @@ class TypoScript {
     private static function cObjectInit() {
         $pid = self::getPid();
 
-        $GLOBALS['TSFE'] = new TypoScriptFrontendController($TYPO3_CONF_VARS, $pid, 0, true);
+        $GLOBALS['TSFE'] = GeneralUtility::makeInstance(TypoScriptFrontendController::class, $GLOBALS['TYPO3_CONF_VARS'], $pid, 0, true);
 
         if (!is_object($GLOBALS['TT'])) {
             $GLOBALS['TT'] = GeneralUtility::makeInstance(\TYPO3\CMS\Core\TimeTracker\TimeTracker::class);
@@ -182,7 +182,9 @@ class TypoScript {
         }
 
         $GLOBALS['TSFE']->tmpl = GeneralUtility::makeInstance(\TYPO3\CMS\Core\TypoScript\TemplateService::class);
-        $GLOBALS['TSFE']->tmpl->tt_track = 0; // Do not log time-performance information
+        // Do not log time-performance information
+        $GLOBALS['TSFE']->tmpl->tt_track = false;
+        $GLOBALS['TSFE']->tmpl->init();
 
         $GLOBALS['TSFE']->sys_page = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\Page\PageRepository::class);
         //$GLOBALS['TSFE']->sys_page->init($GLOBALS['TSFE']->showHiddenPage); // This makes problems if page is hidden!
