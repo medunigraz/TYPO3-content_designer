@@ -3,6 +3,9 @@
 namespace KERN23\ContentDesigner\Hooks\Form;
 
 use \KERN23\ContentDesigner\Service\TypoScript;
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /***************************************************************
  *  Copyright notice
@@ -53,6 +56,26 @@ class FlexFormDs {
      * @param $fieldName
      */
     public function getFlexFormDS_postProcessDS(&$dataStructArray, &$conf, &$row, &$table, &$fieldName) {
+        // Init cache
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $cache = $objectManager->get(CacheManager::class, $objectManager)->getCache('content_designer');
+        $cacheIdentifier = $row['CType'];
+
+        // Restore dataStructArray from cache if necessary
+        $cachedDataStructArray = $cache->get($cacheIdentifier);
+        if (!array_key_exists('uid', $row) && $cachedDataStructArray) {
+            $dataStructArray = $cachedDataStructArray;
+            return true;
+        }
+
+        // Cache dataStructArray
+        $cache->set(
+            $cacheIdentifier,
+            $dataStructArray,
+            array(),
+            0
+        );
+
         $curObjType = $this->getElementTypeAndTable($row);
 
         // Get the typoscript configuration object
@@ -81,7 +104,17 @@ class FlexFormDs {
         } else return false;
 
         // Create the dataStructArray
-        return $this->getDataStructArray($cObject, $dataStructArray);
+        $this->getDataStructArray($cObject, $dataStructArray);
+
+        // Cache modified dataStructArray
+        $cache->set(
+            $cacheIdentifier,
+            $dataStructArray,
+            array(),
+            0
+        );
+
+        return true;
     }
 
 
