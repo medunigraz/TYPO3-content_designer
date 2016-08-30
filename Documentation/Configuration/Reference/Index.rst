@@ -29,174 +29,198 @@ settings.cObjectFlexFile
     Description
         Path to a FlexForm XML file, alternative to the cObject definition.
 
+settings.renderMethod
+"""""""""""""""""""""
+.. container:: table-row
 
-
-.. t3-field-list-table::
-    :header-rows: 1
-
-    - :Setup:
-        Setup
-    :Description:
-        Description
-    :Type:
-        Type
-    :Default:
-        Default
-
-    - :Setup:
+    Property
         settings.renderMethod
-    :Description:
-        By default it renders the cObject but if you set it to “flexFormFile” the “cObjectFlexFile” will be used
-    :Type:
+    Data type
         string
-    :Default:
+    Description
+        By default it renders the cObject but if you set it to “flexFormFile” the “cObjectFlexFile” will be used
+    Default
         flexForm
 
-    - :Setup:
+settings.title
+""""""""""""""
+.. container:: table-row
+
+    Property
         settings.title
-    :Description:
+    Data type
+        string
+    Description
         Label of the content Element
-    :Type:
-        string
-    :Default:
-        -
 
-    - :Setup:
+settings.description
+""""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.description
-    :Description:
+    Data type
+        string
+    Description
         Description of the CE for the wizard.
-    :Type:
-        string
-    :Default:
-        -
 
-    - :Setup:
+settings.previewObj
+"""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.previewObj
-    :Description:
+    Data type
+        stdWrap
+    Description
         Could be anything what TypoScript can do. Renders the backend preview in the page module.
-    :Type:
-        stdWrap
-    :Default:
-        -
 
-    - :Setup:
+settings.renderObj
+""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.renderObj
-    :Description:
-        Define here the frontend rendering of your content Element.
-    :Type:
+    Data type
         stdWrap
-    :Default:
-        -
+    Description
+        Define here the frontend rendering of your content Element.
 
-    - :Setup:
+settings.icon
+"""""""""""""
+.. container:: table-row
+
+    Property
         settings.icon
-    :Description:
+    Data type
+        string
+    Description
         Path to a icon Image (eq GIF) for the CE Wizard
-    :Type:
-        string
-    :Default:
+    Default
         Ext default
 
-    - :Setup:
+settings.iconSmall
+""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.iconSmall
-    :Description:
-        Path to a icon Image (eq GIF) the the Ctype Dropdown.
-    :Type:
+    Data type
         string
-    :Default:
+    Description
+        Path to a icon Image (eq GIF) the the Ctype Dropdown.
+    Default
         Ext default
 
-    - :Setup:
+settings.disableDefaultDrawItem
+"""""""""""""""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.disableDefaultDrawItem
-    :Description:
-        Whether to draw the item using the default functionalities
-    :Type:
+    Data type
         boolean
-    :Default:
+    Description
+        Whether to draw the item using the default functionalities
+    Default
         0
 
-    - :Setup:
+settings.flexform
+"""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.flexform
-    :Description:
-        This will be automaticly filled by the Extension with the Data from the settings.cObject or the values from the FlexFile (cObjectFlexFile) if your fields named like “settings.flexform.yourfield
-    :Type:
+    Data type
         Array
-    :Default:
+    Description
+        This will be automaticly filled by the Extension with the Data from the settings.cObject or the values from the FlexFile (cObjectFlexFile) if your fields named like “settings.flexform.yourfield
+    Default
         Ext. automatic
 
-    - :Setup:
+settings.cObject
+""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.cObject
-    :Description:
-        Definition of the Backend Layout
-    :Type:
+    Data type
         Array
-    :Default:
-        -
+    Description
+        Definition of the Backend Layout
 
-    - :Setup:
+settings.cObjectFlexFile
+""""""""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.cObjectFlexFile
-    :Description:
+    Data type
+        string
+    Description
         Path to a FlexForm XML file, alternative to the cObject definition.
-    :Type:
-        string
-    :Default:
-        -
 
-    - :Setup:
+settings.altLabelField
+""""""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.altLabelField
-    :Description:
-        Overwrite the TCA Label in the List Module with static value. Useful if you're not using the tt_content header Field.Feature needed to be enabled in extManager extConf!
-    :Type:
+    Data type
         string
-    :Default:
-        -
+    Description
+        Overwrite the TCA Label in the List Module with static value. Useful if you're not using the tt_content header Field.Feature needed to be enabled in extManager extConf!
 
-    - :Setup:
+settings.altLabelField.userFunc
+"""""""""""""""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.altLabelField.userFunc
-    :Description:
+    Data type
+        string
+    Description
         Like above but uses a userFunction to generate the title. Example of a user function included in the Extension Folder (Resources / Private / LabelUserFunc / user_labelexample.class.php
         See it in action with the gallery example (enable feature in extMgr and go to list module to a page which has the gallery element on it)
         Call it like this:altLabelField.userFunc = EXT:content_designer/Resou rces/Private/LabelUserFunc/user_labelexample.class.php:user_labelexa mple->getUserLabelFeature needed to be enabled in extManager extConf!
-    :Type:
-        string
-    :Default:
-        -
 
-    - :Setup:
+settings.tca
+""""""""""""
+.. container:: table-row
+
+    Property
         settings.tca
-    :Description:
+    Data type
+        string
+    Description
         The default TCA Layout for the Content Element. Since 2.6.0 it's empty and then the setting tcaFromType will be used. If you put something into this (like TS default commented code) this is used
-    :Type:
-        string
-    :Default:
-        -
 
-    - :Setup:
+settings.tcaFromType
+""""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.tcaFromType
-    :Description:
-        Copies the default TCA from another Ctype and appends the pi_flexform field. By default it copies from the Header CType
-    :Type:
+    Data type
         string
-    :Default:
+    Description
+        Copies the default TCA from another Ctype and appends the pi_flexform field. By default it copies from the Header CType
+    Default
         header
 
-    - :Setup:
+settings.tcaFromTypePosition
+""""""""""""""""""""""""""""
+.. container:: table-row
+
+    Property
         settings.tcaFromTypePosition
-    :Description:
-        Where should be the pi_flexform TCA field placed
-    :Type:
+    Data type
         string
-    :Default:
+    Description
+        Where should be the pi_flexform TCA field placed
+    Default
         after:header
 
-    - :Setup:
-        settings.tcaFromTypePosition
-    :Description:
-        Where should be the pi_flexform TCA field placed
-    :Type:
-        string
-    :Default:
-        after:header
 
 
 [tsref:tt_content.tx_contentdesigner_YOURELKEY]
