@@ -3,7 +3,6 @@
     <file source-language="de" datatype="plaintext" original="messages" date="2016-02-18T19:42:22Z" product-name="content_designer">
         <header/>
         <body>
-
             <trans-unit id="extmng.sheetTitle">
                 <target><![CDATA[Tab-Titel für den Inhaltselement Wizard (not really needed anymore)]]></target>
             </trans-unit>

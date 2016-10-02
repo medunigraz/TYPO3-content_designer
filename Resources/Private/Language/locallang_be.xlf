@@ -3,7 +3,6 @@
     <file source-language="en" datatype="plaintext" original="messages" date="2016-02-18T19:42:22Z" product-name="content_designer">
         <header/>
         <body>
-
             <trans-unit id="extmng.sheetTitle">
                 <source>Sheet label for the Content Element Wizard (not really needed anymore)</source>
             </trans-unit>

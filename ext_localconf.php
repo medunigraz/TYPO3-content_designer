@@ -25,6 +25,7 @@ $TYPO3_CONF_VARS['SC_OPTIONS']['tslib/class.tslib_content.php']['postInit'][] =
 	'EXT:content_designer/Classes/Hooks/ContentRendererObject.php:KERN23\\ContentDesigner\\Hooks\\ContentRendererObject';
 
 // Explicit Allow Hook
+// CustomPermOptions not possible (DB not available for the correct way)
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['formDataGroup']['tcaDatabaseRecord'][\KERN23\ContentDesigner\Backend\Form\FormDataProvider\AbstractItemProvider::class] = array(
 	'depends' => array(
 		\TYPO3\CMS\Backend\Form\FormDataProvider\AbstractItemProvider::class

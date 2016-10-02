@@ -75,7 +75,7 @@ class AbstractItemProvider implements FormDataProviderInterface {
 
                 // Put into result
                 $items[] = array(
-                    '[' . $adModeLang[$explicitADMode] . '] ' . $itemSettings['title'],
+                    '[' . $adModeLang[$explicitADMode] . '] ' .  $GLOBALS['LANG']->sL($itemSettings['title']),
                     $table . ':CType:' . $itemKey . ':' . $explicitADMode,
                     $icons[$explicitADMode],
                     NULL
