@@ -169,7 +169,7 @@ class ExtTables {
      */
     private static function addPlugin($newElementKey, $newElementConfig) {
         if ( strlen($newElementConfig['iconSmall']) > 0 ) {
-            if ( file_exists($newElementConfig['iconSmall']) ) {
+            if ( @file_exists($newElementConfig['iconSmall']) ) {
                 self::$iconRegistry->registerNewIcon($newElementKey . '-iconSmall', $newElementConfig['iconSmall']);
                 $newElementConfig['iconSmall'] = $newElementKey . '-iconSmall';
             }
