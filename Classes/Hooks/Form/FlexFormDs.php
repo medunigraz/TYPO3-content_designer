@@ -56,6 +56,11 @@ class FlexFormDs {
      * @param $fieldName
      */
     public function getFlexFormDS_postProcessDS(&$dataStructArray, &$conf, &$row, &$table, &$fieldName) {
+        // Check for valid table and/or CType
+        if ($table != 'tt_content' || !is_array($row) || !array_key_exists('CType', $row) || !strlen($row['CType'])) {
+            return false;
+        }
+
         // Init cache
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $cache = $objectManager->get(CacheManager::class, $objectManager)->getCache('content_designer');
